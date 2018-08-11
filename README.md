@@ -1,7 +1,7 @@
 # TicTacToeLocal
 ## Description
-Local Game of TicTacToe utilizing swift
-This tic tac toe game allows the player to play against the computer
+- Local Game of Tic Tac Toe App that utilizing swift 
+- This tic tac toe game allows the player to play against the computer
 ## Technologies used
 UIKit
 ## setup
