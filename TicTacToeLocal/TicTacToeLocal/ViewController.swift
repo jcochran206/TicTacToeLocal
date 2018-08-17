@@ -9,7 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    //global btns
+    @IBOutlet weak var btn1: UIButton!
+    @IBOutlet weak var btn2: UIButton!
+    @IBOutlet weak var btn3: UIButton!
+    @IBOutlet weak var btn4: UIButton!
+    @IBOutlet weak var btn5: UIButton!
+    @IBOutlet weak var btn6: UIButton!
+    @IBOutlet weak var btn7: UIButton!
+    @IBOutlet weak var btn8: UIButton!
+    @IBOutlet weak var btn9: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -35,6 +47,7 @@ class ViewController: UIViewController {
             player1.append(btnSelect.tag)
             activePlayer = 2
             print(player1)
+            AutoPlayer()
         }else{
             btnSelect.setTitle("O", for: UIControlState.normal)
             btnSelect.backgroundColor = UIColor(red: 88/255, green: 231/255, blue: 147/255, alpha: 0.5)
@@ -44,6 +57,7 @@ class ViewController: UIViewController {
         }
         btnSelect.isEnabled = false
         findWinner()
+        
     }
     
     func findWinner(){
@@ -136,6 +150,46 @@ class ViewController: UIViewController {
         }
         
         
+    }
+    
+    func AutoPlayer(){
+        //scan empty cells
+        var emptyCells = [Int]()
+        
+        for index in 1...9 {
+            
+            if !(player1.contains(index) || player2.contains(index)){
+                emptyCells.append(index)
+            }
+        }
+        
+        let ranIndex = arc4random_uniform(UInt32(emptyCells.count))
+        let cellID = emptyCells[Int(ranIndex)]
+        var buSelect:UIButton?
+        switch cellID {
+        case 1:
+            buSelect = btn1
+        case 2:
+            buSelect = btn2
+        case 3:
+            buSelect = btn3
+        case 4:
+            buSelect = btn4
+        case 5:
+            buSelect = btn5
+        case 6:
+            buSelect = btn6
+        case 7:
+            buSelect = btn7
+        case 8:
+            buSelect = btn8
+        case 9:
+            buSelect = btn9
+        default:
+            buSelect = btn1
+        }
+        
+        playGame(btnSelect: buSelect!)
     }
     
 }
